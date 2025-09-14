@@ -6,7 +6,7 @@ router.post('/virtual-account', async (req, res) => {
         const account = await createVirtualAccount();
         res.status(201).json({success: true, account})
     }catch(err){
-        res.status(500).json({success: false, message: 'could not create virtual account'})
+        res.status(500).json({success: false, message: 'could not create virtual account', data: err.data})
     }
 })
 

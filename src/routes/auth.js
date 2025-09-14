@@ -53,6 +53,12 @@ router.post('/login',async (req, res) => {
             expiresIn: new Date(Date.now() * process.env.COOKIE_EXPIRES * 24 * 60 * 60 * 1000)
         }
 
+        const now = Math.floor(Date.now() / 1000); // current time in seconds
+        const exp = now + 100 * 60; // 5 minutes later
+
+        console.log("Current epoch time:", now);
+        console.log("Epoch time + 5 minutes:", exp);
+
         res.cookie('user', token, cookieOptions)
         res.status(200).json({message: "Logged In Successful", "token": token})
     }catch(error){
