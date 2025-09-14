@@ -74,9 +74,13 @@ router.put('/user/profile', async (req, res) => {
         return res.status(404).json({message: "Please ensure you're logged in!"});
     }
     const {firstName, lastName} = req.body
-    const result = await User.updateOne({userId: verifyUser.userId}, {$set: {firstName, lastName}})
+    const result = await User.updateOne({userId: verifyUser.userId}, {$set: {firstName, lastName, updatedAt: new Date()}})
     if (result.matchedCount === 0) return res.status(404).json({message: "User not found!"})
-    else return res.status(200).json({message: "Profile updated successfully"})
+    else {
+        return res.status(200).json({message: "Profile updated successfully"})
+    }
 })
+
+router.get('')
 
 module.exports = router
