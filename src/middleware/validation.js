@@ -30,4 +30,4 @@ const UpdateUserValidation = data => {
     if (error) return error.details[0].message
 }
 
-module.exports = { LoginValidation, RegisterValidation }
+module.exports = { LoginValidation, RegisterValidation, UpdateUserValidation }
